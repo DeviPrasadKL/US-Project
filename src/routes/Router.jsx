@@ -27,13 +27,13 @@ const Router = [
         element: <FullLayout />,
         children: [
             /** Redirects the root path to the Login page. */
-            { path: '/', element: <Navigate to="/Login" /> },
+            { path: '/', element: <Navigate to="/login" /> },
 
             /** The Home page route. */
             { path: '/home', element: <Home /> },
 
             /** Catch-all route for undefined paths, redirects to the 404 error page. */
-            { path: '*', element: <Navigate to="/auth/404" /> },
+            { path: '*', element: <Navigate to="/not_found" /> },
         ]
     },
     {
@@ -41,13 +41,13 @@ const Router = [
         element: <BlankLayout />,
         children: [
             /** The Login page route. */
-            { path: '/Login', element: <Login /> },
+            { path: '/login', element: <Login /> },
 
             /** The 404 error page route. */
-            { path: '/auth/404', element: <Error /> },
+            { path: '/not_found', element: <Error /> },
 
             /** Catch-all route for undefined paths, redirects to the 404 error page. */
-            { path: '*', element: <Navigate to="/auth/404" /> },
+            { path: '*', element: <Navigate to="/not_found" /> },
         ],
     },
 ];

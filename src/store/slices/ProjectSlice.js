@@ -26,7 +26,7 @@ export const ProjectSlice = createSlice({
          * @param {Object} action - The action object containing the payload.
          * @param {string} action.payload - The new project name to set.
          */
-        setUser: (state, action) => {
+        setProjectName: (state, action) => {
             state.projectName = action.payload;
         },
     },

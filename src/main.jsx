@@ -1,4 +1,4 @@
-import { StrictMode, Suspense } from 'react';
+import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
@@ -7,6 +7,8 @@ import store from './store/Store.js';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
+import Loadable from './components/loadable/Loadable.jsx';
+const Spinner = Loadable(lazy(() => import('./components/uiComponents/Spinner.jsx')));
 
 /**
  * Creates a persisted store instance using redux-persist.
@@ -24,7 +26,7 @@ createRoot(document.getElementById('root')).render(
       Suspense component is used for handling code-splitting and lazy-loaded components.
       The fallback prop specifies what to display while the lazy components are loading.
     */}
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Spinner/>}>
       {/*
         PersistGate delays the rendering of the app until the persisted state has been retrieved and saved to redux.
         This ensures that the app can rehydrate its state correctly on startup.
