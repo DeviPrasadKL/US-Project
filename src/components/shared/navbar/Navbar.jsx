@@ -15,9 +15,9 @@ import Dropmenu from './Dropmenu';
 export default function Navbar({ title }) {
     return (
         <Box>
-            <Stack flexDirection='row' justifyContent='space-between' mx={2}>
+            <Stack flexDirection='row' justifyContent='space-between' alignItems='center' mx={2}>
                 {/* Title of the Navbar */}
-                <Typography variant="h4" ml={1}>{title}</Typography>
+                <Typography variant="h2" ml={1}>{title}</Typography>
 
                 {/* Container for the Navbar icons */}
                 <Stack flexDirection='row'>
