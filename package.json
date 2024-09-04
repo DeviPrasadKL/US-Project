@@ -24,6 +24,8 @@
     "react-router-dom": "^6.3.0",
     "react-spinners": "^0.14.1",
     "redux-persist": "^6.0.0",
+    "simplebar": "^6.2.7",
+    "simplebar-react": "^3.2.6",
     "styled-components": "^6.1.13",
     "svgr": "^1.10.0"
   },

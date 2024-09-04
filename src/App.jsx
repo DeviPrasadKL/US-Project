@@ -1,14 +1,20 @@
 import { useRoutes } from 'react-router-dom';
-import Spinner from './components/uiComponents/Spinner'
 import Router from './routes/Router';
-import ScrollToTop from './components/shared/ScrollToTop';
+import ScrollToTop from './components/shared/scrollToTop/ScrollToTop';
+import { ThemeProvider } from '@mui/material';
+import Theme from './theme/Theme';
 
 function App() {
   const routing = useRoutes(Router);
+  const theme = Theme();
 
   return (
     <>
-      <ScrollToTop>{routing}</ScrollToTop>
+      <ThemeProvider theme={theme}>
+        <ScrollToTop>
+          {routing}
+        </ScrollToTop>
+      </ThemeProvider>
     </>
   )
 }
