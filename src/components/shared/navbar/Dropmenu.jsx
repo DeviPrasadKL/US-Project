@@ -20,9 +20,7 @@ export default function Dropmenu() {
         setAnchorEl2(event.currentTarget);
     };
 
-    /**
-     * Closes the menu by setting the anchor element to null.
-     */
+    /** Closes the menu by setting the anchor element to null. */
     const handleClose2 = () => {
         setAnchorEl2(null);
     };

@@ -49,7 +49,7 @@ export default function Navbar({ title }) {
                 sx={{
                     borderRadius: '4px',
                     border: '1px solid transparent',
-                    background: 'linear-gradient(90deg, rgba(26,105,129,1) 0%, rgba(54,172,181,1) 100%)',
+                    background: 'linear-gradient(90deg, rgba(26,105,129,1) 0%, rgba(54,172,181,0.6615021008403361) 100%)',
                     padding: '0.15rem',
                 }}
             >

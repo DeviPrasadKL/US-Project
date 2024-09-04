@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import ProjectReducer from './slices/ProjectSlice';
 
 // Import necessary functions and constants from redux-persist
 import storage from 'redux-persist/lib/storage';
@@ -14,6 +13,9 @@ import {
     REGISTER,
 } from 'redux-persist';
 import { combineReducers } from '@reduxjs/toolkit';
+
+import ProjectSlice from './slices/ProjectSlice';
+import ThemeSlice from './slices/ThemeSlice';
 
 /**
  * Configuration for redux-persist.
@@ -34,7 +36,8 @@ const persistConfig = {
  * @property {function} projectReducer - The reducer for managing project-related state.
  */
 const reducer = combineReducers({
-    projectReducer: ProjectReducer,
+    projectReducer: ProjectSlice,
+    themeReducer: ThemeSlice
 });
 
 /**
