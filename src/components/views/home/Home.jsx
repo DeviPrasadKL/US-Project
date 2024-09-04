@@ -14,12 +14,12 @@ export default function Home() {
     { name: 'Analysis', count: 'Loading...', icon: FaRegEdit, data: {}, active: true },
     { name: 'Construction', count: 'Loading...', icon: GiCargoCrane, active: true },
     { name: 'Design', count: 'Loading...', icon: GiPaintBrush, active: true },
-    { name: 'Legal', count: '0', icon: FaFileSignature, active: false },
     { name: 'Marketing', count: 'Loading...', icon: IoBasket, active: true },
     { name: 'Acquisition', count: 'Loading...', icon: FaHandHoldingUsd, active: true },
-    { name: 'Lending', count: '0', icon: FaMoneyCheckAlt, active: false },
-    { name: 'Account', count: '0', icon: FaCalculator, active: false },
     { name: 'Dashboard', count: '120', icon: FaChartPie, active: true },
+    { name: 'Lending', count: '0', icon: FaMoneyCheckAlt, active: false },
+    { name: 'Legal', count: '0', icon: FaFileSignature, active: false },
+    { name: 'Account', count: '0', icon: FaCalculator, active: false },
   ];
 
   return (
@@ -30,7 +30,7 @@ export default function Home() {
           <Card
             key={index + card.name}
             sx={{
-              width: 290,
+              width: 220,
               textAlign: 'center',
               p: 2,
               background: '#DBFDFF',
@@ -43,7 +43,7 @@ export default function Home() {
             }}
           >
             <Stack alignItems="center" mb={2}>
-              <card.icon style={{ fontSize: '80px', color: card.active ? '#00A9B9' : '#00b0c047' }} />
+              <card.icon style={{ fontSize: '60px', color: card.active ? '#00A9B9' : '#00b0c047' }} />
             </Stack>
             <Typography variant="h6">{card.name}</Typography>
             <Typography variant="body2">{card.count}</Typography>
