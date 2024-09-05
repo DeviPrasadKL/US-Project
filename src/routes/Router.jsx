@@ -4,12 +4,13 @@ import { lazy } from "react";
 
 /** 
  * Dynamically imported layouts and components using React.lazy 
- */
+*/
 const FullLayout = Loadable(lazy(() => import('../components/layout/FullLayout')));
 const BlankLayout = Loadable(lazy(() => import('../components/layout/BlankLayout')));
 const Error = Loadable(lazy(() => import('../components/views/notFound/Error')));
 const Home = Loadable(lazy(() => import('../components/views/home/Home')));
 const Login = Loadable(lazy(() => import('../components/views/login/Login')));
+const Tasks = Loadable(lazy(() => import('../components/views/Tasks/Tasks')));
 
 /**
  * Defines the application's route configuration.
@@ -29,8 +30,8 @@ const Router = [
             /** Redirects the root path to the Login page. */
             { path: '/', element: <Navigate to="/login" /> },
 
-            /** The Home page route. */
             { path: '/home', element: <Home /> },
+            { path: '/tasks', element: <Tasks /> },
 
             /** Catch-all route for undefined paths, redirects to the 404 error page. */
             { path: '*', element: <Navigate to="/not_found" /> },
@@ -40,10 +41,8 @@ const Router = [
         path: '/',
         element: <BlankLayout />,
         children: [
-            /** The Login page route. */
             { path: '/login', element: <Login /> },
 
-            /** The 404 error page route. */
             { path: '/not_found', element: <Error /> },
 
             /** Catch-all route for undefined paths, redirects to the 404 error page. */
