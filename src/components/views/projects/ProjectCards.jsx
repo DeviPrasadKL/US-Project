@@ -1,25 +1,31 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function ProjectCards({ data }) {
+
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        navigate(`/${data.name}`);
+    }
+
     return (
         <Box>
-            <Typography variant='p'>Project Cards {data.name} </Typography>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345 }} variant="outlined" onClick={handleClick} key={data.name}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
                         height="140"
-                        image={data.property_image}
+                        image={`http://10.10.0.33${data.property_image}`}
                         alt="green iguana"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Lizard
+                            {data.name}
                         </Typography>
                         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                            Lizards are a widespread group of squamate reptiles, with over 6,000
-                            species, ranging across all continents except Antarctica
+                            {`${data.project_name} Some other details Extra`}
                         </Typography>
                     </CardContent>
                 </CardActionArea>

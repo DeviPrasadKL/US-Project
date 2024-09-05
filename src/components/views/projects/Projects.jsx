@@ -45,9 +45,24 @@ function Projects() {
                             </Tabs>
                         </Box>
                         {
-                            projectData.map((project, index) => (
+                            tabsList.map((project, index) => (
                                 <CustomTabPanel value={value} index={index} key={project.name}>
-                                    <ProjectCards data={project} />
+                                    <Stack
+                                        flexDirection={'row'}
+                                        flexWrap={'wrap'}
+                                        sx={{
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}
+                                        gap={2}>
+                                        {
+                                            projectData.map((singleProj) => {
+                                                return (
+                                                    <ProjectCards data={singleProj} key={singleProj.name}/>
+                                                )
+                                            })
+                                        }
+                                    </Stack>
                                 </CustomTabPanel>
                             ))
                         }
