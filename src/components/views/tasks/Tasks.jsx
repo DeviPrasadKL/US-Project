@@ -4,9 +4,9 @@ import { Box, Stack, Typography } from '@mui/material';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { CustomTabPanel, a11yProps } from '../../uiComponents/CustomTabPanel';
-import TasksCards from './TasksCards';
 import { tasksData } from '../../../dummyData/MockData'
 import PageContainer from '../../shared/pageContainer/PageContainer';
+import TasksCards from './TasksCards';
 
 /**
  * A functional component that renders a task management interface with tabs.

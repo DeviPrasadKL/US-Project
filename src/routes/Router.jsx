@@ -10,7 +10,7 @@ const BlankLayout = Loadable(lazy(() => import('../components/layout/BlankLayout
 const Error = Loadable(lazy(() => import('../components/views/notFound/Error')));
 const Home = Loadable(lazy(() => import('../components/views/home/Home')));
 const Login = Loadable(lazy(() => import('../components/views/login/Login')));
-const Tasks = Loadable(lazy(() => import('../components/views/Tasks/Tasks')));
+const Tasks = Loadable(lazy(() => import('../components/views/tasks/Tasks')));
 const Projects = Loadable(lazy(() => import('../components/views/projects/Projects')));
 
 /**

@@ -144,18 +144,18 @@ export default function TasksCards({ data }) {
                     columns={columns}
                     initialState={{ pagination: { paginationModel } }}
                     pageSizeOptions={[5, 10, 15, 20]}
-                    sx={{ border: 0 }}
                     getRowId={(row) => row.name}
                     onCellClick={(details) => handleClick(details)}
                     checkboxSelection={false}
+                    isRowSelectable={false}
                     disableSelectionOnClick
                     sx={{
                         border: 0,
                         '& .header': {
-                            fontSize: '1.25rem', // Increase font size for headers
+                            fontSize: '1.25rem', 
                         },
                         '& .cell': {
-                            fontSize: '1rem', // Increase font size for cells
+                            fontSize: '1rem',
                         },
                     }}
                 />
