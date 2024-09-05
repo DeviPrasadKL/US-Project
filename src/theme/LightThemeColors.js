@@ -5,7 +5,7 @@ const LightThemeColors = [
             primary: {
                 main: '#00A9B9',
                 light: '#00A9B9',
-                dark: '#00A9B9',
+                dark: '#25d7e8',
                 contrastText: '#ffffff',
             },
             secondary: {
@@ -26,7 +26,7 @@ const LightThemeColors = [
                 contrastText: '#ffffff',
             },
             secondary: {
-                main: '#47D7BC',
+                main: '#DBFDFF',
                 light: '#EDFBF7',
                 dark: '#39C7AD',
                 contrastText: '#ffffff',

@@ -1,7 +1,7 @@
 import { useRoutes } from 'react-router-dom';
 import Router from './routes/Router';
 import ScrollToTop from './components/shared/scrollToTop/ScrollToTop';
-import { ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import Theme from './theme/Theme';
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <ScrollToTop>
           {routing}
         </ScrollToTop>

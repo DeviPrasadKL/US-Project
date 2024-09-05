@@ -1,7 +1,8 @@
-import { Box, Button, IconButton, Menu, Typography } from '@mui/material';
+import { Box, Button, IconButton, Menu, Stack, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import Scrollbar from '../../uiComponents/Scrollbar';
+import LightAndDarkToggle from '../../uiComponents/LightAndDarkToggle';
 
 /**
  * Dropmenu component that displays a profile menu with a logout button.
@@ -52,6 +53,11 @@ export default function Dropmenu() {
                     <Box p={3}>
                         {/* Menu title */}
                         <Typography mb={2} variant="h5">Profile</Typography>
+
+                        {/* Light and dark mode */}
+                        <Stack mb={2} justifyContent='center' alignItems='center'>
+                            <LightAndDarkToggle />
+                        </Stack>
 
                         {/* Logout button */}
                         <Button
