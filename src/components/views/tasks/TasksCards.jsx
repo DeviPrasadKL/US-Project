@@ -5,6 +5,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { tasksData as rows } from '../../../dummyData/MockData';
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Defines the columns for the DataGrid.
@@ -124,6 +125,8 @@ const paginationModel = { page: 0, pageSize: 5 };
  */
 export default function TasksCards({ data }) {
 
+    const naviagte = useNavigate();
+
     /**
      * Handles cell click events in the DataGrid.
      * 
@@ -132,6 +135,7 @@ export default function TasksCards({ data }) {
      */
     const handleClick = (details) => {
         console.log("Id = ", details);
+        navigate('/projectsDetails', { state: { details } }); 
     };
 
     return (
