@@ -6,8 +6,15 @@ import { FaRegEdit, FaClipboardList, FaFileSignature, FaHandHoldingUsd, FaCalcul
 import { IoBasket } from "react-icons/io5";
 import { GiCargoCrane, GiPaintBrush } from 'react-icons/gi';
 import PageContainer from '../../shared/pageContainer/PageContainer';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setTeamName } from '../../../store/slices/ProjectSlice';
 
 export default function Home() {
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   // Initial cards data with icons
   const initialCardsData = [
     { name: 'Sourcing', count: 'Loading...', icon: TbWorldSearch, data: {}, active: true },
@@ -22,6 +29,13 @@ export default function Home() {
     { name: 'Legal', count: '0', icon: FaFileSignature, active: false },
     { name: 'Account', count: '0', icon: FaCalculator, active: false },
   ];
+
+  const handleCardClick = (name, isActive) => {
+    if (isActive) {
+      dispatch(setTeamName(name));
+      navigate('/projects');
+    }
+  }
 
   return (
     <PageContainer title="Home" description="Home page">
@@ -42,6 +56,7 @@ export default function Home() {
                   transform: 'scale(1.04)',
                 },
               }}
+              onClick={() => { handleCardClick(card.name, card.active) }}
             >
               <Stack alignItems="center" mb={2}>
                 <card.icon style={{ fontSize: '60px', color: card.active ? '#00A9B9' : '#00b0c047' }} />
