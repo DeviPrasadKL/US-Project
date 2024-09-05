@@ -3,6 +3,7 @@ import React from 'react';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import Dropmenu from './Dropmenu';
+import { Link } from 'react-router-dom';
 
 /**
  * Navbar component displaying a title and a set of icons with optional badges.
@@ -17,14 +18,16 @@ export default function Navbar({ title }) {
         <Box>
             <Stack flexDirection='row' justifyContent='space-between' alignItems='center' mx={2}>
                 {/* Title of the Navbar */}
-                <Typography variant="h2" ml={1}>{title}</Typography>
+                <Typography variant="h2" ml={1}>{title.toUpperCase()}</Typography>
 
                 {/* Container for the Navbar icons */}
                 <Stack flexDirection='row'>
                     {/* Home icon button */}
                     <Box>
                         <IconButton>
-                            <HomeOutlinedIcon color="action" sx={{ height: '2rem', width: '2rem' }} />
+                            <Link to='/home'>
+                                <HomeOutlinedIcon color="action" sx={{ height: '2rem', width: '2rem' }} />
+                            </Link>
                         </IconButton>
                     </Box>
 
