@@ -1,18 +1,22 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import {setProjectName} from '../../../store/slices/ProjectSlice'
 
 export default function ProjectCards({ data }) {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const handleClick = () => {
-        navigate(`/${data.name}`);
+    const handleClick = (name) => {
+        dispatch(setProjectName(name));
+        navigate('/tasks');
     }
 
     return (
         <Box>
-            <Card sx={{ maxWidth: 345 }} variant="outlined" onClick={handleClick} key={data.name}>
+            <Card sx={{ maxWidth: 345 }} variant="outlined" onClick={()=>{handleClick(data.name)}} key={data.name}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
