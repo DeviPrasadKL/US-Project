@@ -4,6 +4,7 @@ import RingLoader from "react-spinners/RingLoader";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import HashLoader from "react-spinners/HashLoader";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import { Stack } from "@mui/material";
 
 /**
  * CSS override for spinner styling.
@@ -24,15 +25,17 @@ const override = {
  */
 export default function Spinner() {
     return (
-        <div className="sweet-loading">
-            {/* RingLoader component from react-spinners to show a loading spinner */}
-            <RingLoader
-                color={'#36ACB5'} // Spinner color
-                cssOverride={override} // Custom CSS styling for the spinner
-                size={100} // Size of the spinner in pixels
-                aria-label="Loading Spinner" // ARIA label for accessibility
-                data-testid="loader" // Test ID for testing purposes
-            />
-        </div>
+        <Stack width='100%' height='100%' justifyContent='center' alignItems='center'>
+            <div className="sweet-loading">
+                {/* RingLoader component from react-spinners to show a loading spinner */}
+                <RingLoader
+                    color={'#36ACB5'} // Spinner color
+                    cssOverride={override} // Custom CSS styling for the spinner
+                    size={100} // Size of the spinner in pixels
+                    aria-label="Loading Spinner" // ARIA label for accessibility
+                    data-testid="loader" // Test ID for testing purposes
+                />
+            </div>
+        </Stack>
     );
 }
