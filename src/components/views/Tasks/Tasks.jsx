@@ -5,6 +5,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { CustomTabPanel, a11yProps } from '../../uiComponents/CustomTabPanel';
 import TasksCards from './TasksCards';
+import { tasksData } from '../../../dummyData/MockData'
+import PageContainer from '../../shared/pageContainer/PageContainer';
 
 /**
  * A functional component that renders a task management interface with tabs.
@@ -47,33 +49,35 @@ export default function Tasks() {
     const tabsList = [...defaultTabs, ...additionalTabs];
 
     return (
-        <Box m={2}>
-            <Navbar title='Acquisition' />
+        <PageContainer title="Tasks" description="Task page">
+            <Box m={2}>
+                <Navbar title='Acquisition' />
 
-            <Box my={1}>
-                <Stack sx={{ width: '100%' }} justifyContent='center' alignItems='center'>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                            {
-                                tabsList.map((tabName, index) => (
-                                    <Tab
-                                        label={<Typography variant='h6'>{tabName}</Typography>}
-                                        {...a11yProps({ index })}
-                                        key={tabName}
-                                    />
-                                ))
-                            }
-                        </Tabs>
-                    </Box>
-                    {
-                        tabsList.map((tab, index) => (
-                            <CustomTabPanel value={value} index={index} key={tab}>
-                                <TasksCards data={index} />
-                            </CustomTabPanel>
-                        ))
-                    }
-                </Stack>
+                <Box my={1}>
+                    <Stack sx={{ width: '100%'}} justifyContent='center' alignItems='center'>
+                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                                {
+                                    tabsList.map((tabName, index) => (
+                                        <Tab
+                                            label={<Typography variant='p'>{tabName}</Typography>}
+                                            {...a11yProps({ index })}
+                                            key={tabName}
+                                        />
+                                    ))
+                                }
+                            </Tabs>
+                        </Box>
+                        {
+                            tabsList.map((tab, index) => (
+                                <CustomTabPanel value={value} index={index} key={tab}>
+                                    <TasksCards data={tasksData} />
+                                </CustomTabPanel>
+                            ))
+                        }
+                    </Stack>
+                </Box>
             </Box>
-        </Box>
+        </PageContainer>
     );
 }
