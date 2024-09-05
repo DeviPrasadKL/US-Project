@@ -11,6 +11,7 @@ const Error = Loadable(lazy(() => import('../components/views/notFound/Error')))
 const Home = Loadable(lazy(() => import('../components/views/home/Home')));
 const Login = Loadable(lazy(() => import('../components/views/login/Login')));
 const Tasks = Loadable(lazy(() => import('../components/views/Tasks/Tasks')));
+const Projects = Loadable(lazy(() => import('../components/views/projects/Projects')));
 
 /**
  * Defines the application's route configuration.
@@ -32,6 +33,7 @@ const Router = [
 
             { path: '/home', element: <Home /> },
             { path: '/tasks', element: <Tasks /> },
+            { path: '/projects', element: <Projects /> },
 
             /** Catch-all route for undefined paths, redirects to the 404 error page. */
             { path: '*', element: <Navigate to="/not_found" /> },

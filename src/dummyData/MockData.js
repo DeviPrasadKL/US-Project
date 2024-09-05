@@ -136,5 +136,58 @@ const tasksData =
         }
     ]
 
+const projectData = [
+    {
+        "name": "PROJ-0006",
+        "project_name": "1919, 1921 & 2001 Potomac Dr, Houston, TX",
+        "lot_area": 123,
+        "lot_price": 123,
+        "property_image": "/files/Gemini_Generated_Image_qafofsqafofsqafo.jpeg",
+        "is_owned": 1,
+        "expected_start_date": "2024-05-01",
+        "expected_end_date": "2025-04-30"
+    },
+    {
+        "name": "PROJ-0007",
+        "project_name": "3224 Amherst Ave, Dallas, TX",
+        "lot_area": 123,
+        "lot_price": 123,
+        "property_image": "/files/Gemini_Generated_Image_qafofpqafofpqafo.jpeg",
+        "is_owned": 1,
+        "expected_start_date": "2024-05-01",
+        "expected_end_date": "2025-08-31"
+    },
+    {
+        "name": "PROJ-0008",
+        "project_name": "1001 E 7 ½ street, Houston, TX",
+        "lot_area": 123,
+        "lot_price": 123,
+        "property_image": null,
+        "is_owned": 1,
+        "expected_start_date": "2024-06-01",
+        "expected_end_date": "2025-07-01"
+    },
+    {
+        "name": "PROJ-0009",
+        "project_name": "4927 Heatherglen Dr, Houston, TX",
+        "lot_area": 123,
+        "lot_price": 123,
+        "property_image": null,
+        "is_owned": 1,
+        "expected_start_date": "2024-06-01",
+        "expected_end_date": "2025-07-01"
+    },
+    {
+        "name": "PROJ-0010",
+        "project_name": "1311 Pine Chase Dr, Houston, TX",
+        "lot_area": 123,
+        "lot_price": 123,
+        "property_image": null,
+        "is_owned": 0,
+        "expected_start_date": "2024-06-01",
+        "expected_end_date": "2025-07-01"
+    }
+];
 
-export { tasksData }
+
+export { tasksData, projectData }
