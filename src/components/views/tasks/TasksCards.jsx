@@ -125,7 +125,7 @@ const paginationModel = { page: 0, pageSize: 5 };
  */
 export default function TasksCards({ data }) {
 
-    const naviagte = useNavigate();
+    const navigate = useNavigate();
 
     /**
      * Handles cell click events in the DataGrid.
