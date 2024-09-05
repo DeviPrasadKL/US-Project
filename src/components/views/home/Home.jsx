@@ -33,7 +33,6 @@ export default function Home() {
               width: 220,
               textAlign: 'center',
               p: 2,
-              background: 'primary',
               border: '2px solid #00A9B9',
               cursor: card.active ? 'pointer' : 'not-allowed',
               transition: 'transform 0.3s ease',
