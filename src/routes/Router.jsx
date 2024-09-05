@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import Loadable from "../components/loadable/Loadable";
 import { lazy } from "react";
+import AddTask from "../components/views/tasks/addTask/AddTask";
 
 /** 
  * Dynamically imported layouts and components using React.lazy 
@@ -36,6 +37,7 @@ const Router = [
             { path: '/tasks', element: <Tasks /> },
             { path: '/projects', element: <Projects /> },
             { path: '/projectsDetails', element: <TaskDetails /> },
+            { path: '/add-task', element: <AddTask /> },
 
             /** Catch-all route for undefined paths, redirects to the 404 error page. */
             { path: '*', element: <Navigate to="/not_found" /> },
