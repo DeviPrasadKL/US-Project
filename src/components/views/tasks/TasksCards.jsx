@@ -1,4 +1,4 @@
-import { Stack, Typography, IconButton } from '@mui/material';
+import { Stack, Typography, IconButton, Chip } from '@mui/material';
 import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import { DataGrid } from '@mui/x-data-grid';
@@ -7,6 +7,7 @@ import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import { useNavigate } from 'react-router-dom';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import AttachmentModal from './AttachmentModal';
+import { useTheme } from '@mui/material/styles';
 
 /**
  * Defines the initial pagination model for the DataGrid.
@@ -27,17 +28,17 @@ const paginationModel = { page: 0, pageSize: 5 };
  * @returns {JSX.Element} The rendered component with a DataGrid inside a Paper element.
  */
 export default function TasksCards({ data }) {
-
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const navigate = useNavigate();
+    const theme = useTheme();  // Access the theme object here
 
     /**
- * Defines the columns for the DataGrid.
- * 
- * @type {Array<object>}
- */
+     * Defines the columns for the DataGrid.
+     * 
+     * @type {Array<object>}
+     */
     const columns = [
         {
             field: 'name',
@@ -80,7 +81,47 @@ export default function TasksCards({ data }) {
             headerName: 'Status',
             width: 130,
             headerClassName: 'header',
-            cellClassName: 'cell',
+            renderCell: (params) => {
+                const status = params.value;
+                let color;
+
+                switch (status) {
+                    case 'Completed':
+                        color = 'success';
+                        break;
+                    case 'Overdue':
+                        color = 'warning';
+                        break;
+                    case 'Cancelled':
+                        color = 'error';
+                        break;
+                    default:
+                        color = 'default';
+                }
+
+                return (
+                    <Chip
+                        label={status}
+                        color={color}
+                        sx={{
+                            backgroundColor: color === 'success'
+                                ? theme.palette.success.light
+                                : color === 'warning'
+                                    ? theme.palette.warning.light
+                                    : color === 'error'
+                                        ? theme.palette.error.light
+                                        : theme.palette.grey[300], 
+                            color: theme.palette.getContrastText(color === 'success'
+                                ? theme.palette.success.light
+                                : color === 'warning'
+                                    ? theme.palette.warning.light
+                                    : color === 'error'
+                                        ? theme.palette.error.light
+                                        : theme.palette.grey[300]),
+                        }}
+                    />
+                );
+            },
         },
         {
             field: 'priority',
@@ -95,7 +136,7 @@ export default function TasksCards({ data }) {
             width: 100,
             sortable: false,
             headerClassName: 'header',
-            renderCell: (params) => (
+            renderCell: () => (
                 <IconButton
                     color="primary"
                     onClick={handleOpen}
@@ -122,27 +163,17 @@ export default function TasksCards({ data }) {
     ];
 
     /**
+     * Handles the view icon click event.
      * 
-     * @param {*} details 
+     * @param {object} row - The row data of the clicked icon.
      */
     const handleView = (details) => {
         console.log("Id = ", details);
         navigate('/projectsDetails', { state: { details } });
     };
 
-    /**
-     * Handles the view icon click event.
-     * 
-     * @param {object} row - The row data of the clicked icon.
-     */
-    const handleViewClick = (row) => {
-        console.log("View details for row: ", row);
-        // Implement view logic here
-    };
-
     return (
         <Stack justifyContent='center' alignItems='center' gap={1}>
-
             <Paper sx={{ height: 500, width: '100%', backgroundColor: 'background.paper' }}>
                 <DataGrid
                     rows={rows}
@@ -151,7 +182,7 @@ export default function TasksCards({ data }) {
                     pageSizeOptions={[5, 10, 15, 20]}
                     getRowId={(row) => row.name}
                     checkboxSelection={false}
-                    isRowSelectable={false}
+                    isRowSelectable={() => false}
                     disableSelectionOnClick
                     sx={{
                         border: 0,

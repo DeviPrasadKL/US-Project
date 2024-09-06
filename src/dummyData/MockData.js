@@ -19,7 +19,7 @@ const tasksData =
         {
             "name": "TASK - 002549",
             "assigned_to_name": null,
-            "status": "Overdue",
+            "status": "Completed",
             "exp_start_date": "2024-08-21",
             "exp_end_date": "2024-08-21",
             "team": "Design",
@@ -35,7 +35,7 @@ const tasksData =
         {
             "name": "TASK - 002550",
             "assigned_to_name": null,
-            "status": "Overdue",
+            "status": "Cancelled",
             "exp_start_date": "2024-08-21",
             "exp_end_date": "2024-08-21",
             "team": "Design",

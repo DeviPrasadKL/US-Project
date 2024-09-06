@@ -35,7 +35,7 @@ export default function AddTask() {
             <Box mx={2} mt={2}>
                 <Navbar title='Add Task' />
             </Box>
-            <Container maxWidth="md" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+            <Container maxWidth="md" sx={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                 <Box p={4} sx={{ width: '100%' }}>
                     <Typography variant="h3" align="center" gutterBottom mb={3}>
                         Add Task
@@ -60,25 +60,28 @@ export default function AddTask() {
                     {/* Form Fields */}
                     <form onSubmit={handleSubmit}>
                         <Stack spacing={2} mt={3}>
-                            <TextField
-                                label="Task Name"
-                                variant="outlined"
-                                fullWidth
-                                name="taskName"
-                                value={formData.taskName}
-                                onChange={handleInputChange}
-                            />
 
-                            <TextField
-                                label="Assign User"
-                                variant="outlined"
-                                fullWidth
-                                name="assignUser"
-                                value={formData.assignUser}
-                                onChange={handleInputChange}
-                            />
+                            <Stack flexDirection='row' spa={2}>
+                                <TextField
+                                    label="Task Name"
+                                    variant="outlined"
+                                    fullWidth
+                                    name="taskName"
+                                    value={formData.taskName}
+                                    onChange={handleInputChange}
+                                />
 
-                            <Stack direction="row" spacing={2}>
+                                <TextField
+                                    label="Assign User"
+                                    variant="outlined"
+                                    fullWidth
+                                    name="assignUser"
+                                    value={formData.assignUser}
+                                    onChange={handleInputChange}
+                                />
+                            </Stack>
+
+                            <Stack direction="row" gap={2}>
                                 <TextField
                                     label="Start Date"
                                     type="date"
@@ -101,28 +104,31 @@ export default function AddTask() {
                                 />
                             </Stack>
 
-                            {/* Dependent Task Checkbox */}
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        checked={dependentTaskChecked}
-                                        onChange={handleCheckboxChange}
-                                    />
-                                }
-                                label="Dependent Task"
-                            />
-
-                            {/* Conditional Parent Task Name Field */}
-                            {dependentTaskChecked && (
-                                <TextField
-                                    label="Parent Task Name"
-                                    variant="outlined"
-                                    fullWidth
-                                    name="parentTaskName"
-                                    value={formData.parentTaskName}
-                                    onChange={handleInputChange}
+                            <Stack flexDirection='row' gap={2} width='100%' height='3rem'>
+                                {/* Dependent Task Checkbox */}
+                                <FormControlLabel
+                                    sx={{ width: '30%' }}
+                                    control={
+                                        <Checkbox
+                                            checked={dependentTaskChecked}
+                                            onChange={handleCheckboxChange}
+                                        />
+                                    }
+                                    label="Dependent Task"
                                 />
-                            )}
+
+                                {/* Conditional Parent Task Name Field */}
+                                {dependentTaskChecked && (
+                                    <TextField
+                                        sx={{ width: '70%' }}
+                                        label="Parent Task Name"
+                                        variant="outlined"
+                                        name="parentTaskName"
+                                        value={formData.parentTaskName}
+                                        onChange={handleInputChange}
+                                    />
+                                )}
+                            </Stack>
 
                             <TextField
                                 label="Description"
