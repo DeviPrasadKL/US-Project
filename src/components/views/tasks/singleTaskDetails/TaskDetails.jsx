@@ -1,7 +1,18 @@
-import { Box, Button, Checkbox, Container, FormControl, FormControlLabel, InputLabel, MenuItem, Select, Stack, TextField, Typography } from '@mui/material'
+import {
+    Box,
+    Button,
+    Checkbox,
+    Container,
+    FormControl,
+    FormControlLabel,
+    InputLabel, MenuItem,
+    Select,
+    Stack,
+    TextField,
+    Typography
+} from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../../shared/navbar/Navbar'
-import { useLocation } from 'react-router-dom';
 
 export default function TaskDetails() {
 
@@ -20,7 +31,7 @@ export default function TaskDetails() {
         subTasks: []
     });
 
-    const [newSubTask, setNewSubTask] = useState({ subTaskName: '', status: '' });
+    const [newSubTask, setNewSubTask] = useState({ subTaskName: '', status: 'Pending' });
     const [showSubTaskFields, setShowSubTaskFields] = useState(false);
 
     const handleSubmit = (e) => {
@@ -52,6 +63,7 @@ export default function TaskDetails() {
             subTasks: [...prevData.subTasks, newSubTask]
         }));
         setNewSubTask({ subTaskName: '', status: '' });
+        setShowSubTaskFields(false);
     };
 
     const tasks = [
@@ -349,40 +361,44 @@ export default function TaskDetails() {
                                 </Stack>
                             ))}
 
-                            {/* Button to Add More Subtasks */}
-                            <Button variant="outlined" onClick={() => setShowSubTaskFields(true)}>
-                                Add More Sub Tasks
-                            </Button>
-
                             {showSubTaskFields && (
-                                <Stack spacing={2}>
-                                    <TextField
-                                        label="Sub Task Name"
-                                        variant="outlined"
-                                        fullWidth
-                                        name="subTaskName"
-                                        value={newSubTask.subTaskName}
-                                        onChange={(e) => setNewSubTask({ ...newSubTask, subTaskName: e.target.value })}
-                                    />
-                                    <Select
-                                        label="Status"
-                                        value={newSubTask.status}
-                                        onChange={(e) => setNewSubTask({ ...newSubTask, status: e.target.value })}
-                                        fullWidth
-                                    >
-                                        <MenuItem value="Pending">Pending</MenuItem>
-                                        <MenuItem value="Completed">Completed</MenuItem>
-                                        <MenuItem value="Cancelled">Cancelled</MenuItem>
-                                    </Select>
+                                <>
+                                    <Stack flexDirection={'row'} gap={2}>
+                                        <TextField
+                                            label="Sub Task Name"
+                                            variant="outlined"
+                                            fullWidth
+                                            name="subTaskName"
+                                            value={newSubTask.subTaskName}
+                                            onChange={(e) => setNewSubTask({ ...newSubTask, subTaskName: e.target.value })}
+                                        />
+                                        <Select
+                                            label="Status"
+                                            value={newSubTask.status}
+                                            onChange={(e) => setNewSubTask({ ...newSubTask, status: e.target.value })}
+                                            fullWidth
+                                        >
+                                            <MenuItem value="Pending">Pending</MenuItem>
+                                            <MenuItem value="Completed">Completed</MenuItem>
+                                            <MenuItem value="Cancelled">Cancelled</MenuItem>
+                                        </Select>
+                                    </Stack>
                                     <Button variant="contained" onClick={handleAddSubTask}>
                                         Add Sub Task
                                     </Button>
-                                </Stack>
+                                </>
                             )}
 
-                            <Button variant="contained" color="primary" type="submit" fullWidth>
-                                Submit
-                            </Button>
+                            {/* Button to Add More Subtasks */}
+                            <Stack flexDirection={'row'} gap={2}>
+                                <Button variant="outlined" onClick={() => setShowSubTaskFields(!showSubTaskFields)} sx={{width: '50%'}}>
+                                    {showSubTaskFields ? "Cancel" : "Add More Sub Tasks"}
+                                </Button>
+
+                                <Button variant="contained" color="primary" type="submit" sx={{width: '50%'}}>
+                                    Submit
+                                </Button>
+                            </Stack>
                         </Stack>
                     </form>
                 </Box>
