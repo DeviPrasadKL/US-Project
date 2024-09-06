@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from '../../shared/navbar/Navbar';
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { CustomTabPanel, a11yProps } from '../../uiComponents/CustomTabPanel';
-import { tasksData } from '../../../dummyData/MockData'
+import { tasksData } from '../../../dummyData/MockData';
 import PageContainer from '../../shared/pageContainer/PageContainer';
 import TasksCards from './TasksCards';
-import { Link } from 'react-router-dom';
 
 /**
  * A functional component that renders a task management interface with tabs.
@@ -25,16 +24,6 @@ import { Link } from 'react-router-dom';
 export default function Tasks() {
     const [value, setValue] = useState(0);
 
-    /**
-     * Handles the change of selected tab.
-     *
-     * @param {React.SyntheticEvent} event - The event triggered by the tab change.
-     * @param {number} newValue - The new index of the selected tab.
-     */
-    const handleChange = (event, newValue) => {
-        setValue(newValue);
-    };
-
     // Team identifier, can be used to determine tab contents.
     const team = "Acquisition";
 
@@ -49,6 +38,24 @@ export default function Tasks() {
     // Combined list of tabs to display.
     const tabsList = [...defaultTabs, ...additionalTabs];
 
+    // Map to keep track of tab names by index.
+    const tabNameMap = tabsList.reduce((acc, tab, index) => {
+        acc[index] = tab;
+        return acc;
+    }, {});
+
+    /**
+     * Handles the change of selected tab.
+     *
+     * @param {React.SyntheticEvent} event - The event triggered by the tab change.
+     * @param {number} newValue - The new index of the selected tab.
+     */
+    const handleTabChange = (event, newValue) => {
+        setValue(newValue);
+        const selectedTabName = tabNameMap[newValue];
+        console.log("Selected Tab Name: ", selectedTabName);
+    };
+
     return (
         <PageContainer title="Tasks" description="Task page">
             <Box m={2}>
@@ -57,7 +64,7 @@ export default function Tasks() {
                 <Box my={1}>
                     <Stack sx={{ width: '100%' }} justifyContent='center' alignItems='center'>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                            <Tabs value={value} onChange={handleTabChange} aria-label="basic tabs example">
                                 {
                                     tabsList.map((tabName, index) => (
                                         <Tab
@@ -76,12 +83,6 @@ export default function Tasks() {
                                 </CustomTabPanel>
                             ))
                         }
-                    </Stack>
-                    <Stack flexDirection='row' justifyContent='space-between' mx={8}>
-                        <Button variant='contained' >Back</Button>
-                        <Button variant='contained' component={Link} to='/add-task'>
-                            Add Task
-                        </Button>
                     </Stack>
                 </Box>
             </Box>

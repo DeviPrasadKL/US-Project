@@ -1,10 +1,10 @@
-import { Stack, Typography, IconButton, Chip } from '@mui/material';
+import { Stack, Typography, IconButton, Chip, Button, Box } from '@mui/material';
 import React, { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import { DataGrid } from '@mui/x-data-grid';
 import { tasksData as rows } from '../../../dummyData/MockData';
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import AttachmentModal from './AttachmentModal';
 import { useTheme } from '@mui/material/styles';
@@ -110,7 +110,7 @@ export default function TasksCards({ data }) {
                                     ? theme.palette.warning.light
                                     : color === 'error'
                                         ? theme.palette.error.light
-                                        : theme.palette.grey[300], 
+                                        : theme.palette.grey[300],
                             color: theme.palette.getContrastText(color === 'success'
                                 ? theme.palette.success.light
                                 : color === 'warning'
@@ -174,7 +174,13 @@ export default function TasksCards({ data }) {
 
     return (
         <Stack justifyContent='center' alignItems='center' gap={1}>
-            <Paper sx={{ height: 500, width: '100%', backgroundColor: 'background.paper' }}>
+            <Stack flexDirection='row' justifyContent='space-between' width='100%' mx={8}>
+                <Box></Box>
+                <Button variant='contained' component={Link} to='/add-task'>
+                    Add Task
+                </Button>
+            </Stack>
+            <Paper sx={{ maxHeight: 500, width: '100%', backgroundColor: 'background.paper' }}>
                 <DataGrid
                     rows={rows}
                     columns={columns}
